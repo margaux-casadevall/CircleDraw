@@ -20,19 +20,29 @@ public class Drawing extends Canvas {
         circle = new Circle(p, c, 30);
         rectangle = new Rect(p1, 25, 90,c);
         square = new Square(p2,30,c);
-        f = new Frame("My window"); // Instantiates the Frame
-        f.add(this); // Adds the Canvas to the Frame
-        f.setLayout(null);  //Stops the frame from trying to layout contents
-        f.setSize(400, 400); // Sets the dimension of the Frame
-        f.setVisible(true);
+        setupFrame();
         f.addWindowListener(new WindowAdapter(){ //Closes the program if close window clicked
           public void windowClosing(WindowEvent e) {
               f.dispose();
           }
         });
+
+        setupCanva();
+    }
+
+    private void setupCanva() {
         setBackground(Color.WHITE); //Sets the Canvas background
         setSize(400, 400); // Sets the Canvas size to be the same as the frame
     }
+
+    private void setupFrame() {
+        f = new Frame("My window"); // Instantiates the Frame
+        f.add(this); // Adds the Canvas to the Frame
+        f.setLayout(null);  //Stops the frame from trying to layout contents
+        f.setSize(400, 400); // Sets the dimension of the Frame
+        f.setVisible(true);
+    }
+
     public void paint(Graphics g){
         circle.draw(g);
         rectangle.draw(g);
