@@ -1,19 +1,16 @@
 import java.awt.* ;
-public class Rect {
-    private int X;
-    private int Y;
-    private int width, height;
-    private Color col; // AWT class Color
+public class Rect extends Shape{
+    public int width, height;
 
-    public Rect(int x, int y, int w, int h, Color col){ // The constructor
-        this.X = x;
-        this.Y = y;
+    public Rect(Point initPos, int w, int h, Color col){ // The constructor
+        super(initPos, col);
         width = w;
         height = h;
-        this.col=col;
     }
+
+    @Override
     public void draw(Graphics g){ // A method that draws the object in g
         g.setColor(col);
-        g.fillRect(X, Y,width,height);;
+        g.fillRect(pos.x,pos.y,width,height);;
     }
 }

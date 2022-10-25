@@ -8,13 +8,18 @@ public class Drawing extends Canvas {
     Color c =new Color(0xE70909);// The RGB number comprises three bytes: red, green and blue
 
     private Rect rectangle;
+    Point p1 = new Point(30,30);
+
+    private Square square;
+    Point p2 = new Point(230,300);
 
     private Frame f;   // A private field called f of AWT class Frame
 
     // The constructor
     public Drawing(){
         circle = new Circle(p, c, 30);
-        rectangle = new Rect(30, 30, 25, 90,c);
+        rectangle = new Rect(p1, 25, 90,c);
+        square = new Square(p2,30,c);
         f = new Frame("My window"); // Instantiates the Frame
         f.add(this); // Adds the Canvas to the Frame
         f.setLayout(null);  //Stops the frame from trying to layout contents
@@ -31,5 +36,6 @@ public class Drawing extends Canvas {
     public void paint(Graphics g){
         circle.draw(g);
         rectangle.draw(g);
+        square.draw(g);
     }
 }
