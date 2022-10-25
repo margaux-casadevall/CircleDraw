@@ -1,3 +1,5 @@
+package shapes;
+
 import java.awt.* ;
 public class Rect extends Shape{
     public int width, height;
