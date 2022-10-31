@@ -1,7 +1,7 @@
 import shapes.Circle;
 import shapes.Rect;
 import shapes.Square;
-import shapes.Square;
+import java.util.ArrayList;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -20,19 +20,28 @@ public class Drawing extends Canvas {
 
     private Frame f;   // A private field called f of AWT class Frame
 
+    ArrayList<Shape> shapeList = new ArrayList<>();
+
     // The constructor
     public Drawing(){
-        circle = new Circle(p, c, 30);
-        rectangle = new Rect(p1, 25, 90,c);
-        square = new Square(p2,30,c);
         setupFrame();
         f.addWindowListener(new WindowAdapter(){ //Closes the program if close window clicked
-          public void windowClosing(WindowEvent e) {
-              f.dispose();
-          }
+            public void windowClosing(WindowEvent e) {
+                f.dispose();
+            }
         });
 
         setupCanva();
+
+        for (int i = 0; i < 5; i++){
+            Circle circle = new Circle(p, c, 30);
+            Rect rectangle = new Rect(p1, 25, 90, c);
+            Square square = new Square(p2, 30, c);
+            shapeList.add((Shape) circle);
+            shapeList.add((Shape) rectangle);
+            shapeList.add((Shape) square);
+        }
+        System.out.println(shapeList);
     }
 
     private void setupCanva() {
@@ -49,8 +58,15 @@ public class Drawing extends Canvas {
     }
 
     public void paint(Graphics g){
+        Circle circle = new Circle(p, c, 30);
+        Rect rectangle = new Rect(p1, 25, 90, c);
+        Square square = new Square(p2, 30, c);
         circle.draw(g);
         rectangle.draw(g);
         square.draw(g);
+
+        /*for (Shape shape : shapeList) {
+            shape.draw(g);
+        }*/
     }
 }
