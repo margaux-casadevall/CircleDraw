@@ -18,5 +18,3 @@ public class Circle extends Shape {
         g.fillOval(pos.x,pos.y,rad, rad);
     }
 }
-
-// Change 1
